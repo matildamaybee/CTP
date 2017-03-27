@@ -1,0 +1,22 @@
+//Code for setting an audio scare event off once the player has collided with my trigger
+
+#pragma strict
+
+//will create slots in unity in which i can drag my crow sfx into
+
+var crow : AudioClip; 
+
+function Start () {
+
+}
+
+function Update () {
+
+}
+
+//once the player has entered my trigger, get my crow audio component and play it once when entered
+
+function OnTriggerEnter () {
+
+	GetComponent.<AudioSource>().PlayOneShot(crow);
+}
