@@ -1,0 +1,44 @@
+using UnityEngine;
+using System.Collections;
+
+//in order o develop this code I had to refer back to a piece of coursework I created in second year for my 3d tech module. This is for when the player collects the key and is able to unlock the cellar door to progress to the second chapter.
+
+public class keyCollect : MonoBehaviour {
+	
+
+	
+	public int score;
+	
+	void Start () {
+		
+		
+		score = 0;
+		
+	}
+	
+	void Update () {
+		
+	}
+	
+  //this statements states that if the player has entered my key trigger, add that to my score and delete the key GameObject as it's been collected
+	public void OnTriggerEnter(Collider collisionInfo){
+		
+		
+		if(collisionInfo.gameObject.tag == "cellarkey"){
+			
+
+			Destroy(collisionInfo.gameObject);
+			score++;
+			Debug.Log ("Key Collected");
+		}
+		
+    // this if statement states that if the key has been collected so that the score is equal to 1, activate my cellar door trigger so that once collided with with the key, load the start menu. The cellar door will only be active once the key is collected. Once later developed after uwe this will load the second chapter
+		if(collisionInfo.gameObject.tag == "cellardoor"){
+			if(score == 1) {
+				Application.LoadLevel(0);
+			}
+			
+		}
+		
+	}
+}
