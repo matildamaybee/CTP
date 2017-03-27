@@ -1,0 +1,23 @@
+//Code for setting an audio scare event off once the player has collided with my trigger
+
+#pragma strict
+
+
+// this public class with open slots in unity where I insert my audio clip I want to play
+
+var bonecrunch : AudioClip; 
+
+function Start () {
+
+}
+
+function Update () {
+
+}
+
+// this remaining section states that once the player has entered my set trigger, it will get my audio component and play audio once when entered
+
+function OnTriggerEnter () {
+
+	GetComponent.<AudioSource>().PlayOneShot(bonecrunch);
+}
