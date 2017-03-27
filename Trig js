@@ -1,0 +1,37 @@
+var scare : GameObject;
+var played = false;
+var trig = false;
+
+var scareSound: AudioClip;
+// make sure its not visable and reset
+function Start () {
+	trig = false;
+	scare.GetComponent.<Renderer>().enabled = false;
+	}
+  
+// when player enters trigger,set to true
+function OnTriggerEnter (other : Collider) {
+	trig = true;
+}
+// enable renderer and trigger sound and timer
+function Update () {
+	if (trig == true) {
+		scare.GetComponent.<Renderer>().enabled = true;
+		removeovertime ();
+		makehimscream ();
+	}
+}
+// timer for how long the scare event should be on for, this means the plane with the scare image on will play for the set time alongside the audio in sync
+function removeovertime () {
+	yield WaitForSeconds (3);
+	scare.GetComponent.<Renderer>().enabled = false;
+	Destroy(this.gameObject);
+	
+}
+// sound 
+function makehimscream () {
+	if (!played) {
+		played = true;
+		GetComponent.<AudioSource>().PlayOneShot(scareSound);
+	}
+}
