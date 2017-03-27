@@ -1,0 +1,34 @@
+var Paper : int = 0;
+var paperToWin : int = 5;  //amount of notes to collect in total
+
+
+//if the trigger around the paper is entered, add that paper to the players score and delete the paper to emphasise its been collected
+function OnTriggerEnter( other : Collider )
+	{
+		if (other.gameObject.tag == "Paper")
+		{
+			Paper += 1;
+			Debug.Log("Note collected. Total notes = " + Paper); // add that paper to the score and display in the panel
+			Destroy(other.gameObject);
+		}
+	}
+
+	function OnGUI()
+	{
+		if (Paper < paperToWin)
+		{
+    //display of my GUI panel
+			GUI.Box(Rect((Screen.width/2)-100, 10, 200, 35), "" + Paper + " / 5 notes collected"); //tallies the amount of papers collected 
+		}
+
+		else
+		{
+			GUI.Box(Rect((Screen.width/2)-100, 10, 200, 35), "All notes collected!"); //displays this comment once all notes are collected
+		}
+
+
+//unused coded that states once all 5 papers are collected load the next level, however i decided i want the player the collect a key first which then ends the level
+		//if (Paper ==5){
+			//Application.LoadLevel(0);
+		//}
+	}
