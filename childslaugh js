@@ -1,0 +1,22 @@
+// script to my childslaugh audio scare event
+
+#pragma strict
+
+// public class creates slots in unity where I can drag and drop my chosen audio 
+
+var childslaugh : AudioClip; 
+
+function Start () {
+
+}
+
+function Update () {
+
+}
+
+//once the player has entered my trigger, it will get my audio component and play it once when the trigger is entered
+
+function OnTriggerEnter () {
+
+	GetComponent.<AudioSource>().PlayOneShot(childslaugh);
+}
