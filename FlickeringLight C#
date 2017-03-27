@@ -1,0 +1,26 @@
+using UnityEngine;
+using System.Collections;
+
+
+//these public variable allows you to manually changed the flickering speed/ time in unity
+public class FlickeringLight : MonoBehaviour {
+	Light testLight;
+	public float minWaitTime;
+	public float maxWaitTime;
+
+	//this states that on start get the light component and start flashing, while statement is true, toggle the light component on and off
+  void Start () {
+		testLight = GetComponent<Light> ();
+		StartCoroutine (Flashing ());
+	}
+
+	IEnumerator Flashing ()
+	{
+		while (true) {
+			yield return new WaitForSeconds (Random.Range (minWaitTime, maxWaitTime)); //by adding this random function, the light will toggle on and off at a random pace and not a predictable one
+			testLight.enabled = ! testLight.enabled;
+		}
+	}
+
+
+}
