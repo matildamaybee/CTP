@@ -3,7 +3,7 @@
 #pragma strict
 
 
-// this public class with open slots in unity where I insert my audio clip I want to play
+// this public variable which create open slots in unity where I insert my audio clip I want to play
 
 var bonecrunch : AudioClip; 
 
