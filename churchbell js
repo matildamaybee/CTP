@@ -1,0 +1,22 @@
+//Code for setting an audio scare event off once the player has collided with my trigger
+
+#pragma strict
+
+//this will create slots in unity in which i can drag and drop my chosen audio source into, in this case; my church bell sfx
+
+var churchbell : AudioClip; 
+
+function Start () {
+
+}
+
+function Update () {
+
+}
+
+//one the player has entered the trigger, get the audio component and play it once when the trigger has been collided with by the player
+
+function OnTriggerEnter () {
+
+	GetComponent.<AudioSource>().PlayOneShot(churchbell);
+}
