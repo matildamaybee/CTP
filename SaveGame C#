@@ -1,0 +1,32 @@
+using UnityEngine;
+using System.Collections;
+
+
+public class SaveGame : MonoBehaviour {
+	public Transform Player;
+
+//once the game begins
+	void Awake()
+	{
+		Player.position = new Vector3 (PlayerPrefs.GetFloat ("x"), PlayerPrefs.GetFloat ("y"), PlayerPrefs.GetFloat ("z"));
+		Player.eulerAngles = new Vector3 (0, PlayerPrefs.GetFloat ("Cam_y"), 0);
+	}
+
+	//this section allows the player to save to the games register so that once they go to play it again the game will load its previous position
+  public void SaveGameSettings(bool Quit)
+	{
+		//saves the players x,y,z position 
+    PlayerPrefs.SetFloat ("x", Player.position.x); //by setting a float called x, this will be a file saved into the register containing the players x position. 
+		PlayerPrefs.SetFloat ("y", Player.position.y); //by setting a float called y, this will be a file saved into the register containing the players y position.
+		PlayerPrefs.SetFloat ("z", Player.position.z); //by setting a float called z, this will be a file saved into the register containing the players z position.
+		PlayerPrefs.SetFloat ("Cam_y", Player.eulerAngles.y); //saves the cameras y position
+
+//if quit, set the time scale back to 1 and load the menu
+		if (Quit) 
+		{
+			Time.timeScale = 1;
+			Application.LoadLevel("Menu");
+		}
+	}
+
+}
